@@ -22,22 +22,36 @@ function getNumberInput(e) {
 function calculate() {
 	for (i = 0; i < operation.length / 2; i++) {
 		let counter = 0;
+		oppos = operation.findIndex(
+			(element) => (element == "+") | (element == "-")
+		);
+		if (oppos != -1) {
+			counter = oppos - 1;
+		}
+
+		oppos = operation.findIndex(
+			(element) => (element == "*") | (element == "/")
+		);
+		if (oppos != -1) {
+			counter = oppos - 1;
+		}
+
 		switch (operation[counter + 1]) {
 			case "+":
 				operation[counter] =
-					parseInt(operation[counter]) + parseInt(operation[counter + 2]);
+					parseFloat(operation[counter]) + parseFloat(operation[counter + 2]);
 				break;
 			case "-":
 				operation[counter] =
-					parseInt(operation[counter]) - parseInt(operation[counter + 2]);
+					parseFloat(operation[counter]) - parseFloat(operation[counter + 2]);
 				break;
 			case "*":
 				operation[counter] =
-					parseInt(operation[counter]) * parseInt(operation[counter + 2]);
+					parseFloat(operation[counter]) * parseFloat(operation[counter + 2]);
 				break;
 			case "/":
 				operation[counter] =
-					parseInt(operation[counter]) / parseInt(operation[counter + 2]);
+					parseFloat(operation[counter]) / parseFloat(operation[counter + 2]);
 				break;
 		}
 		console.log(operation);
@@ -79,7 +93,7 @@ equals[0].addEventListener("click", () => {
 });
 
 correct[0].addEventListener("click", () => {
-	if (parseInt(input.slice(-2, -1)).toString() == "NaN") {
+	if (parseFloat(input.slice(-2, -1)).toString() == "NaN") {
 		input = input.slice(0, -2);
 	} else {
 		input = input.slice(0, -1);
