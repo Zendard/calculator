@@ -6,6 +6,7 @@ const multiply = document.getElementsByName("multiply");
 const divide = document.getElementsByName("divide");
 const equals = document.getElementsByName("equals");
 const correct = document.getElementsByName("correct");
+const dot = document.getElementsByName("dot");
 
 let operation = [];
 let input = "";
@@ -93,11 +94,25 @@ equals[0].addEventListener("click", () => {
 });
 
 correct[0].addEventListener("click", () => {
-	if (parseFloat(input.slice(-2, -1)).toString() == "NaN") {
+	if (parseInt(input.slice(-2, -1)).toString() == "NaN") {
 		input = input.slice(0, -2);
 	} else {
 		input = input.slice(0, -1);
 	}
 
+	updateDisplay();
+});
+
+dot[0].addEventListener("click", () => {
+	console.log(input.split(" "));
+	console.log(input.split(" ")[input.split(" ").length - 1]);
+	if (
+		parseInt(input.split(" ")[input.split(" ").length - 1]).toString() == "NaN"
+	) {
+		input += "0.";
+	} else if (input.split(" ")[input.split(" ").length - 1].includes(".")) {
+	} else {
+		input += ".";
+	}
 	updateDisplay();
 });

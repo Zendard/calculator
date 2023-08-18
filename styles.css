@@ -67,3 +67,8 @@ button {
 .operation {
 	background-color: orange;
 }
+
+#dot {
+	font-weight: 900;
+	font-size: 30px;
+}
